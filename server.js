@@ -168,6 +168,14 @@ app.post('/create-reminder', authenticateJWT, async (req, res) => {
 //   }
 
 // user authentication
-app.listen(port, () => {
+// app.listen(port, () => {
+//     console.log(`Server is running on port ${port}`);
+// });
+
+if (require.main === module) {
+  app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
-});
+  });
+} else {
+  module.exports = app;
+}
